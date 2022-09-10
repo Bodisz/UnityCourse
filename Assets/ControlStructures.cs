@@ -12,6 +12,24 @@ public class ControlStructures : MonoBehaviour
         {
             Debug.Log("Páros");
         }
+        else if (!isEven)
+        {
+            Debug.Log("Páratlan");
+        }
+        else
+        { Debug.Log("Vége a világnak"); }
 
+
+        int i = 1;
+        while (i <= number+1)
+        { 
+            i++;
+            Debug.Log(i);
+        }
+
+        for (int j = 0; j < number; j++)
+        {
+            Debug.Log(j);
+        }
     }
 }
