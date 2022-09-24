@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] Vector3 velocity;
+    [SerializeField] float angularSpeed = 360;
+    [SerializeField] float speedMultiplier = 1.8f;
     void Update()
     {
         bool up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
@@ -18,7 +20,7 @@ public class PlayerMover : MonoBehaviour
         if (down) { z -= stepunit; }
         if (right) { y = stepunit; }
         if (left) { y -= stepunit; }
-        if (shift) { speed = 2 * stepunit; }
+        if (shift) { speed = speedMultiplier * stepunit; }
 
         velocity.Normalize();
 
@@ -30,9 +32,12 @@ public class PlayerMover : MonoBehaviour
         transform.position += velocity;
 
         //Forgatás
-        Quaternion rotation = transform.rotation;
-        Vector3 euler = rotation.eulerAngles;
+        //Quaternion rotation = transform.rotation;
+        //Vector3 euler = rotation.eulerAngles;
 
-      // if(velocity != Vector3.zero) (transform.rotation = Quaternion.LookRotation(velocity));
+        if (velocity != Vector3.zero) {
+            transform.rotation = Quaternion.LookRotation(velocity); 
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(velocity), angularSpeed*Time.deltaTime);
+        }
     }
 }

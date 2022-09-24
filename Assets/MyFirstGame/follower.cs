@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class follower : MonoBehaviour
 {
-
     [SerializeField] Transform target;
     [SerializeField] float speed;
 
@@ -10,10 +9,21 @@ public class follower : MonoBehaviour
     {
         Vector3 velocity = target.position - transform.position;
 
+        float targetDistance = velocity.magnitude;
+        //float targetDistance2 = Vector3.Distance(target.position, transform.position);
 
-        velocity.Normalize();
-        velocity *= Time.deltaTime;
+        Vector3 direction = velocity.normalized;
 
-        transform.position += velocity * speed;
+        float stepLength = Time.deltaTime * speed;
+
+        if (targetDistance < stepLength)
+        {
+            stepLength = targetDistance;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+
+       transform.rotation = Quaternion.LookRotation(direction);
+
     }
 }
