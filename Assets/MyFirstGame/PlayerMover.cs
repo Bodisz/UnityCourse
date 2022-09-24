@@ -12,16 +12,21 @@ public class PlayerMover : MonoBehaviour
         bool space = Input.GetKey(KeyCode.Space);
         bool shift = Input.GetKey(KeyCode.LeftShift);
 
-        float x = 0, y = 0, z = 0, speed = 1;
+        float x = 0, y = 0, z = 0, speed = 1, stepunit = 3;
 
-        if (up) { z = 0.1f; }
-        if (down) { z = -0.1f; }
-        if (right) { y = 0.1f; }
-        if (left) { y = -0.1f; }
-        if (shift) { speed = 2f; }
+
+        if (up) { z = stepunit; }
+        if (down) { z -= stepunit; }
+        if (right) { y = stepunit; }
+        if (left) { y -= stepunit; }
+        if (shift) { speed = 2 * stepunit; }
+
+        velocity.Normalize();
 
         velocity.x = y * speed;
         velocity.z = z * speed;
+
+        velocity *= Time.deltaTime;
 
         transform.position += velocity;
         
