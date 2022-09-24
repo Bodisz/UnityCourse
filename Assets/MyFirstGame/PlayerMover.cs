@@ -14,7 +14,6 @@ public class PlayerMover : MonoBehaviour
 
         float x = 0, y = 0, z = 0, speed = 1, stepunit = 3;
 
-
         if (up) { z = stepunit; }
         if (down) { z -= stepunit; }
         if (right) { y = stepunit; }
@@ -29,6 +28,11 @@ public class PlayerMover : MonoBehaviour
         velocity *= Time.deltaTime;
 
         transform.position += velocity;
-        
+
+        //Forgatás
+        Quaternion rotation = transform.rotation;
+        Vector3 euler = rotation.eulerAngles;
+
+      // if(velocity != Vector3.zero) (transform.rotation = Quaternion.LookRotation(velocity));
     }
 }
