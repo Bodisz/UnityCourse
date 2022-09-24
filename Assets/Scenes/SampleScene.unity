@@ -693,6 +693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myFirst2DVector: {x: 0, y: 0}
   myFirst3DVector: {x: 0, y: 0, z: 0}
+  sum: {x: 5.66, y: 8, z: 0}
+  difference: {x: 0, y: 0, z: 0}
+  length: 4.2928896
 --- !u!4 &1802814342
 Transform:
   m_ObjectHideFlags: 0
@@ -701,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802814340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.5620365, y: 6.952084, z: -8.793933}
+  m_LocalPosition: {x: 10.644, y: 6.906, z: -8.793933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
