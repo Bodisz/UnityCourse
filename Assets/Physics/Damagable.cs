@@ -40,7 +40,8 @@ public class Damagable : MonoBehaviour
         if (currentHealth == 0)
         {
             gameOverCanvas.SetActive(true);
-          //  turnOffAtDeath = false;
+          //
+          //turnOffAtDeath = false;
         }
         UpdateText();
         StartCoroutine(InvicibilityCoroutine());

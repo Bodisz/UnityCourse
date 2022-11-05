@@ -4,5 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MyFirstGame/FirstGame.unity
+    guid: b0e2e81a2a129944cbf866e0b560cb5e
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 5cb9fa5a849bca0449e7992c3833a7ac, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: fb3050248614dc648a873d4db66234df, type: 2}
