@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ClickExplosion : MonoBehaviour
@@ -6,6 +5,7 @@ public class ClickExplosion : MonoBehaviour
     [SerializeField] float range;
     [SerializeField] float maxExplosionForce;
     [SerializeField] ParticleSystem particleSys;
+    [SerializeField] LayerMask raycastMask;
  
     Rigidbody[] rigidbodies;
     Vector3 lastHit;
@@ -17,12 +17,13 @@ public class ClickExplosion : MonoBehaviour
     void Update()
     {
         Camera cam = Camera.main;
+
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        bool isHit = Physics.Raycast(ray, out RaycastHit hit);
+        bool isHit = Physics.Raycast(ray, out RaycastHit hit, 100, raycastMask);
 
         if (isHit)
         {
-            Debug.Log($"HIT: {hit.collider.name} {hit.point}");
+           // Debug.Log($"HIT: {hit.collider.name} {hit.point}");
             lastHit = hit.point;
 
             if (Input.GetMouseButton(0))
